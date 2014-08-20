@@ -1,4 +1,7 @@
-command: "osascript itunes-artwork/iTunesartwork.widget/iTunes.scpt"
+###
+
+###
+command: "osascript iTunesartwork.widget/iTunes.scpt"
 
 refreshFrequency: 5000
 
@@ -30,7 +33,7 @@ update: (output, domEl) ->
 	if  output.search("PQPQPQPQ")
 		if $(domEl).find('.track').html() != output.substr(0, output.length-4)
 			$(domEl).find('.track').html output.substr(0, output.length-4)
-			IMG =  "<img src=\"itunes-artwork/iTunesartwork.widget/cover.xxx\"/>"
+			IMG =  "<img src=\"iTunesartwork.widget/cover.xxx\"/>"
 			type = output.substr((output.length-4),3)
 			$(domEl).find('.artwork').html(IMG.replace('xxx', type))
 	else
