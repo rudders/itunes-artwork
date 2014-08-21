@@ -34,12 +34,10 @@ update: (output, domEl) ->
 		if $(domEl).find('.track').html() != output.substr(0, output.length-4) # has tracked changed?
 			$(domEl).find('.track').html output.substr(0, output.length-4)
 			type = output.substr((output.length-4),3)
-			console.log(type)
 			if type == "XXX"
 				IMG =  "<img src=\"itunes-artwork/iTunesartwork.widget/unknown.png\" style=\"opacity:0.5\"/>"
 			else
 				IMG =  "<img src=\"itunes-artwork/iTunesartwork.widget/cover." + type + "\" style=\"opacity:0.5; border:1px solid white;\"/>"
-			console.log(IMG)
 			$(domEl).find('.artwork').html(IMG)
 	else
 		$(domEl).find('.track').html ""	
