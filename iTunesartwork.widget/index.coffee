@@ -30,12 +30,17 @@ render: (output) -> """
 """
 
 update: (output, domEl) ->
-	if  output.search("PQPQPQPQ")
-		if $(domEl).find('.track').html() != output.substr(0, output.length-4)
+	if  output.search("PQPQPQPQ") # if this returns 0 we have a track
+		if $(domEl).find('.track').html() != output.substr(0, output.length-4) # has tracked changed?
 			$(domEl).find('.track').html output.substr(0, output.length-4)
-			IMG =  "<img src=\"itunes-artwork/iTunesartwork.widget/cover.xxx\"/>"
 			type = output.substr((output.length-4),3)
-			$(domEl).find('.artwork').html(IMG.replace('xxx', type))
+			console.log(type)
+			if type == "XXX"
+				IMG =  "<img src=\"itunes-artwork/iTunesartwork.widget/unknown.png\" style=\"opacity:0.5\"/>"
+			else
+				IMG =  "<img src=\"itunes-artwork/iTunesartwork.widget/cover." + type + "\" style=\"opacity:0.5; border:1px solid white;\"/>"
+			console.log(IMG)
+			$(domEl).find('.artwork').html(IMG)
 	else
 		$(domEl).find('.track').html ""	
 		$(domEl).find('.artwork').html ""		
